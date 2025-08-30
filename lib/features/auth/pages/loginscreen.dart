@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:necture_ui/core/constants/app_images.dart';
+import 'package:necture_ui/core/functions/email_validator.dart';
 import 'package:necture_ui/core/functions/navigation.dart';
+import 'package:necture_ui/core/functions/password_validation.dart';
 import 'package:necture_ui/core/utils/appcolor.dart';
 import 'package:necture_ui/core/widgets/custom_password_field.dart';
 import 'package:necture_ui/core/widgets/custom_text_field.dart';
 import 'package:necture_ui/core/widgets/main_button.dart';
 import 'package:necture_ui/features/auth/pages/signscreen.dart';
+import 'package:necture_ui/features/home/homescreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -40,11 +43,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Text(
                         "Login",
-                        style: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          fontSize: 26,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                       Text(
                         "Enter your emails and password",
-                        style: TextStyle(color: Appcolor.greycolor, fontSize: 16),
+                        style: TextStyle(
+                          color: Appcolor.greycolor,
+                          fontSize: 16,
+                        ),
                       ),
                     ],
                   ),
@@ -53,19 +62,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     label: "Email",
                     hint: "Enter The Email",
                     prefixIcon: Icon(Icons.email, color: Appcolor.primarycolor),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return  "Please Enter Email";                         
-                      }
-                      return null;                      
-                    },
+
+                    validator: emailValidation
                   ),
                   SizedBox(height: 20),
                   CustomPasswordField(
                     label: "Password",
                     hint: "Enter The Passwort",
-                    prefixIcon: Icon(Icons.lock, color: Appcolor.primarycolor),
-                    
+                    prefixIcon: Icon(Icons.lock, color: Appcolor.primarycolor), 
+                    validator: passwordValidation,                   
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -82,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 20),
                   MainButton(text: "Login",onPressed: () {
                     if (formkey.currentState!.validate()) {
-                      //do logic
+                      pushwithReplacement(context, HomeScreen());
                     }
                   },),
                   Row(
@@ -90,7 +95,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Text(
                         "Don't have an account? ",
-                        style: TextStyle(color: Appcolor.blackColor,fontSize: 14,fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          color: Appcolor.blackColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                       TextButton(
                         onPressed: () {

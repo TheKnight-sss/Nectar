@@ -7,13 +7,14 @@ class CustomPasswordField extends StatefulWidget {
     this.label,
     this.hint,
     this.prefixIcon,
-    this.suffix,
+    this.suffix, this.validator,
   });
 
   final String? label;
   final String? hint;
   final Widget? prefixIcon;
   final Widget? suffix;
+  final String? Function(String?)? validator;
 
   @override
   State<CustomPasswordField> createState() => _CustomTextFieldState();
@@ -24,12 +25,7 @@ class _CustomTextFieldState extends State<CustomPasswordField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please Enter Some Text';
-        }
-        return null;
-      },
+      validator: widget.validator,
       obscureText: obscureText,
       decoration: InputDecoration(
         prefixIcon: widget.prefixIcon,

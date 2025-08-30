@@ -21,7 +21,7 @@ class MainButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text(
           text,
           style: TextStyle(fontSize: 16, color: Appcolor.textcolor),
