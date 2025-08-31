@@ -1,0 +1,87 @@
+📌 Types of Scrollable Widgets in Flutter
+1. SingleChildScrollView
+
+Scrolls a single child widget.
+
+Best when you have a small column or row that might overflow.
+
+Not efficient for long lists, because it renders everything at once.
+
+Example:
+// import 'package:flutter/material.dart';
+
+// class SingleScrollExample extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text("SingleChildScrollView Example")),
+//       body: SingleChildScrollView(
+//         child: Column(
+//           children: List.generate(
+//             20,
+//             (index) => ListTile(
+//               title: Text("Item $index"),
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+2. ListView
+
+Used for displaying a scrollable list of widgets.
+
+It only renders visible items (much more efficient).
+
+Can scroll vertically (default) or horizontally.
+
+Example:
+// class ListViewExample extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text("ListView Example")),
+//       body: ListView.builder(
+//         itemCount: 50,
+//         itemBuilder: (context, index) {
+//           return ListTile(
+//             leading: Icon(Icons.star),
+//             title: Text("List Item $index"),
+//           );
+//         },
+//       ),
+//     );
+//   }
+// }
+
+3. GridView
+
+Used for displaying items in a scrollable grid (like a gallery).
+
+Supports lazy loading.
+Example:
+// class GridViewExample extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text("GridView Example")),
+//       body: GridView.builder(
+//         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//           crossAxisCount: 3, // number of columns
+//           crossAxisSpacing: 10,
+//           mainAxisSpacing: 10,
+//         ),
+//         itemCount: 30,
+//         itemBuilder: (context, index) {
+//           return Container(
+//             color: Colors.blueAccent,
+//             child: Center(child: Text("Item $index")),
+//           );
+//         },
+//       ),
+//     );
+//   }
+// }
+

@@ -6,51 +6,60 @@ class CustomPasswordField extends StatefulWidget {
     super.key,
     this.label,
     this.hint,
-    this.prefixIcon,
-    this.suffix, this.validator,
+    this.validator,
   });
 
   final String? label;
   final String? hint;
-  final Widget? prefixIcon;
-  final Widget? suffix;
   final String? Function(String?)? validator;
 
   @override
-  State<CustomPasswordField> createState() => _CustomTextFieldState();
+  State<CustomPasswordField> createState() => _CustomPasswordFieldState();
 }
 
-class _CustomTextFieldState extends State<CustomPasswordField> {
-  bool obscureText = true;
+class _CustomPasswordFieldState extends State<CustomPasswordField> {
+  bool _obscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       validator: widget.validator,
-      obscureText: obscureText,
+      obscureText: _obscureText,
       decoration: InputDecoration(
-        prefixIcon: widget.prefixIcon,
-        suffixIcon: IconButton(
-          onPressed: () {
-            setState(() {
-              obscureText = !obscureText;
-            });
-          },
-          icon: Icon(obscureText? Icons.visibility_off : Icons.visibility),
-        ),
         labelText: widget.label,
         hintText: widget.hint,
         labelStyle: TextStyle(
           fontSize: 16,
-          color: Appcolor.greycolor,
+          color: Appcolor.grayColor,
           fontWeight: FontWeight.w700,
+        ),
+        prefixIcon: const Icon(Icons.lock, color:Appcolor.primaryColor),
+        suffixIcon: IconButton(
+          icon: Icon(
+            _obscureText ? Icons.visibility_off : Icons.visibility,
+            color:Appcolor.primaryColor,
+          ),
+          onPressed: () {
+            setState(() {
+              _obscureText = !_obscureText;
+            });
+          },
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(color: Appcolor.primarycolor),
+          borderSide: BorderSide(color: Appcolor.primaryColor),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(color: Appcolor.primarycolor),
+          borderSide: BorderSide(color: Appcolor.primaryColor),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: const BorderSide(color: Colors.red),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: const BorderSide(color: Colors.red),
         ),
       ),
     );

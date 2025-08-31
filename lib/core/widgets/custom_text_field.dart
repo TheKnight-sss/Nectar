@@ -31,16 +31,16 @@ class CustomTextField extends StatelessWidget {
         hintText: hint,
         labelStyle: TextStyle(
           fontSize: 16,
-          color: Appcolor.greycolor,
+          color: Appcolor.grayColor,
           fontWeight: FontWeight.w700,
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(color: Appcolor.primarycolor),
+          borderSide: BorderSide(color: Appcolor.primaryColor),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(color: Appcolor.primarycolor),
+          borderSide: BorderSide(color: Appcolor.primaryColor),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),

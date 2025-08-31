@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:necture_ui/core/constants/app_images.dart';
@@ -46,32 +44,40 @@ class _SignScreenState extends State<SignScreen> {
                     children: [
                       Text(
                         "Sign Up",
-                        style: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          fontSize: 26,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                       Text(
                         "Create your Account",
-                        style: TextStyle(color: Appcolor.greycolor, fontSize: 16),
+                        style: TextStyle(
+                          color: Appcolor.grayColor,
+                          fontSize: 16,
+                        ),
                       ),
                     ],
                   ),
                   SizedBox(height: 40),
                   CustomTextField(
                     label: "Full Name",
-                    prefixIcon: Icon(Icons.person,color: Appcolor.primarycolor,),
+                    prefixIcon: Icon(
+                      Icons.person,
+                      color: Appcolor.primaryColor,
+                    ),
                     validator: usernamevalidation,
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 20),
                   CustomTextField(
                     label: "Email",
                     hint: "Enter The Email",
-                    prefixIcon: Icon(Icons.email, color: Appcolor.primarycolor),
+                    prefixIcon: Icon(Icons.email, color: Appcolor.primaryColor),
                     validator: emailValidation,
                   ),
                   SizedBox(height: 20),
                   CustomPasswordField(
                     label: "Password",
                     hint: "Enter The Passwort",
-                    prefixIcon: Icon(Icons.lock, color: Appcolor.primarycolor),
                     validator: passwordValidation,
                   ),
                   Row(
@@ -81,23 +87,30 @@ class _SignScreenState extends State<SignScreen> {
                         onPressed: () {},
                         child: Text(
                           "Forgot Password",
-                          style: TextStyle(color: Appcolor.blackcolor),
+                          style: TextStyle(color: Appcolor.darkColor),
                         ),
                       ),
                     ],
                   ),
                   SizedBox(height: 20),
-                  MainButton(text: "Sign Up",onPressed: () {
-                    if (formkey.currentState!.validate()) {
-                      pushTo(context, Location());
-                    }
-                  },),
+                  MainButton(
+                    text: "Sign Up",
+                    onPressed: () {
+                      if (formkey.currentState!.validate()) {
+                        pushwithReplacement(context, LocationScreen());
+                      }
+                    },
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         "Already Have Account? ",
-                        style: TextStyle(color: Appcolor.blackColor,fontSize: 14,fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          color: Appcolor.darkColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                       TextButton(
                         onPressed: () {
@@ -105,7 +118,7 @@ class _SignScreenState extends State<SignScreen> {
                         },
                         child: Text(
                           "Login",
-                          style: TextStyle(color: Appcolor.primarycolor),
+                          style: TextStyle(color: Appcolor.primaryColor),
                         ),
                       ),
                     ],

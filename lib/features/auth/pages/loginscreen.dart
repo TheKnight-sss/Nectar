@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Text(
                         "Enter your emails and password",
                         style: TextStyle(
-                          color: Appcolor.greycolor,
+                          color: Appcolor.grayColor,
                           fontSize: 16,
                         ),
                       ),
@@ -61,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   CustomTextField(
                     label: "Email",
                     hint: "Enter The Email",
-                    prefixIcon: Icon(Icons.email, color: Appcolor.primarycolor),
+                    prefixIcon: Icon(Icons.email, color: Appcolor.primaryColor),
 
                     validator: emailValidation
                   ),
@@ -69,7 +69,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   CustomPasswordField(
                     label: "Password",
                     hint: "Enter The Passwort",
-                    prefixIcon: Icon(Icons.lock, color: Appcolor.primarycolor), 
                     validator: passwordValidation,                   
                   ),
                   Row(
@@ -79,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () {},
                         child: Text(
                           "Forgot Password",
-                          style: TextStyle(color: Appcolor.blackcolor),
+                          style: TextStyle(color: Appcolor.darkColor),
                         ),
                       ),
                     ],
@@ -96,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Text(
                         "Don't have an account? ",
                         style: TextStyle(
-                          color: Appcolor.blackColor,
+                          color: Appcolor.darkColor,
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                         ),
@@ -107,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                         child: Text(
                           "Sign Up",
-                          style: TextStyle(color: Appcolor.primarycolor),
+                          style: TextStyle(color: Appcolor.primaryColor),
                         ),
                       ),
                     ],
