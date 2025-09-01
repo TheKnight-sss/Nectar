@@ -41,6 +41,7 @@ class _LocationScreenState extends State<LocationScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  SizedBox(height: 80),
                   SvgPicture.asset("assets/images/location.svg"),
                   SizedBox(height: 40),
                   Text(
