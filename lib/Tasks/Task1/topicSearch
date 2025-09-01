@@ -1,87 +1,74 @@
-📌 Types of Scrollable Widgets in Flutter
-1. SingleChildScrollView
+// What is BottomNavigationBar?
 
-Scrolls a single child widget.
+// A BottomNavigationBar is a navigation widget that appears at the bottom of the screen.
 
-Best when you have a small column or row that might overflow.
+// It allows the user to switch between different screens/pages in an app.
 
-Not efficient for long lists, because it renders everything at once.
+// It’s commonly used in apps like Instagram, YouTube, Facebook, etc.
 
-Example:
+// Example
+
+// Let’s make a BottomNavigationBar with 3 items: Home, Search, and Profile.
+
 // import 'package:flutter/material.dart';
 
-// class SingleScrollExample extends StatelessWidget {
+// void main() {
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: MyHomePage(),
+//     );
+//   }
+// }
+
+// class MyHomePage extends StatefulWidget {
+//   @override
+//   _MyHomePageState createState() => _MyHomePageState();
+// }
+
+// class _MyHomePageState extends State<MyHomePage> {
+//   int _selectedIndex = 0;
+
+//   // This list stores the screens for each tab
+//   final List<Widget> _screens = [
+//     Center(child: Text('Home Screen')),
+//     Center(child: Text('Search Screen')),
+//     Center(child: Text('Profile Screen')),
+//   ];
+
 //   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
-//       appBar: AppBar(title: Text("SingleChildScrollView Example")),
-//       body: SingleChildScrollView(
-//         child: Column(
-//           children: List.generate(
-//             20,
-//             (index) => ListTile(
-//               title: Text("Item $index"),
-//             ),
+//       appBar: AppBar(
+//         title: Text('BottomNavigationBar Example'),
+//       ),
+//       body: _screens[_selectedIndex], // Show the selected screen
+//       bottomNavigationBar: BottomNavigationBar(
+//         currentIndex: _selectedIndex, // Highlight the selected tab
+//         onTap: (index) {
+//           setState(() {
+//             _selectedIndex = index; // Update selected index
+//           });
+//         },
+//         items: [
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.home),
+//             label: 'Home',
 //           ),
-//         ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.search),
+//             label: 'Search',
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.person),
+//             label: 'Profile',
+//           ),
+//         ],
 //       ),
 //     );
 //   }
 // }
-
-2. ListView
-
-Used for displaying a scrollable list of widgets.
-
-It only renders visible items (much more efficient).
-
-Can scroll vertically (default) or horizontally.
-
-Example:
-// class ListViewExample extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text("ListView Example")),
-//       body: ListView.builder(
-//         itemCount: 50,
-//         itemBuilder: (context, index) {
-//           return ListTile(
-//             leading: Icon(Icons.star),
-//             title: Text("List Item $index"),
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }
-
-3. GridView
-
-Used for displaying items in a scrollable grid (like a gallery).
-
-Supports lazy loading.
-Example:
-// class GridViewExample extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text("GridView Example")),
-//       body: GridView.builder(
-//         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//           crossAxisCount: 3, // number of columns
-//           crossAxisSpacing: 10,
-//           mainAxisSpacing: 10,
-//         ),
-//         itemCount: 30,
-//         itemBuilder: (context, index) {
-//           return Container(
-//             color: Colors.blueAccent,
-//             child: Center(child: Text("Item $index")),
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }
-
