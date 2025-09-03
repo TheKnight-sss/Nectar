@@ -8,4 +8,5 @@ class Appcolor {
   static const Color borderColor = Color(0xffE2E2E2);
   static const Color searchBarColor = Color(0xffF2F3F2);
   static const Color borderColor2 = Color(0xffE2E2E2);
+  static const Color accentColor = Color(0xffF2F3F2);
 }
