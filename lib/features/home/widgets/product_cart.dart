@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:necture_ui/core/functions/navigation.dart';
 import 'package:necture_ui/core/utils/appcolor.dart';
 import 'package:necture_ui/core/utils/text_styles.dart';
+import 'package:necture_ui/features/details/product_detail_screen.dart';
 import 'package:necture_ui/features/home/models/product_model.dart';
 
 class ProductCart extends StatefulWidget {
@@ -15,7 +17,9 @@ class _ProductCartState extends State<ProductCart> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        pushTo(context, ProductDetailScreen(model: widget.model));
+      },
       child: Container(
         width: 160,
         padding: EdgeInsets.all(14),
