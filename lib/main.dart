@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:necture_ui/features/splash_screen/splash_screen.dart';
+import 'package:necture_ui/features/home/homescreen.dart';
+import 'package:necture_ui/features/main/main_app_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,7 +13,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen()
+      theme: ThemeData(scaffoldBackgroundColor: Colors.white),
+      home: MainAppScreen(),
     );
   }
 }
