@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.2.0
+  gap: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -26,3 +27,4 @@ flutter:
     - assets/images/location.svg
     - assets/images/banana.png
     - assets/images/apple.png
+    - assets/images/welcome1.png

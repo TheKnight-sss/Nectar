@@ -10,6 +10,7 @@ import 'package:necture_ui/core/widgets/custom_text_field.dart';
 import 'package:necture_ui/core/widgets/main_button.dart';
 import 'package:necture_ui/features/auth/pages/signscreen.dart';
 import 'package:necture_ui/features/home/homescreen.dart';
+import 'package:necture_ui/features/main/main_app_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -86,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 20),
                   MainButton(text: "Login",onPressed: () {
                     if (formkey.currentState!.validate()) {
-                      pushwithReplacement(context, HomeScreen());
+                      pushAndRemoveUntil(context, MainAppScreen());
                     }
                   },),
                   Row(
