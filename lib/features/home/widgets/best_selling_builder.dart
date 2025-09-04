@@ -37,9 +37,9 @@ class BestSellingBuilder extends StatelessWidget {
             mainAxisExtent: 250
           ),
           itemBuilder: (context, index) {
-            return ProductCart(model: products[index]);
+            return ProductCart(model: offerproducts[index]);
           },
-          itemCount: products.length,
+          itemCount: offerproducts.length,
         ),
       ],
     );

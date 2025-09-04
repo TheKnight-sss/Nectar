@@ -6,6 +6,7 @@ import 'package:necture_ui/core/utils/appcolor.dart';
 import 'package:necture_ui/core/widgets/custom_text_field.dart';
 import 'package:necture_ui/core/widgets/main_button.dart';
 import 'package:necture_ui/features/home/homescreen.dart';
+import 'package:necture_ui/features/main/main_app_screen.dart';
 
 class LocationScreen extends StatefulWidget {
   const LocationScreen({super.key});
@@ -74,7 +75,7 @@ class _LocationScreenState extends State<LocationScreen> {
                     text: "Submit",
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        pushwithReplacement(context, HomeScreen());
+                        pushwithReplacement(context, MainAppScreen());
                       }
                     },
                   ),

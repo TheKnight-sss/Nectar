@@ -34,11 +34,13 @@ class _ProductCartState extends State<ProductCart> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  widget.model.image,
-                  width: 110,
-                  height: 80,
-                  fit: BoxFit.cover,
+                Hero(tag: widget.model.id,
+                  child: Image.asset(
+                    widget.model.image,
+                    width: 110,
+                    height: 80,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ],
             ),
