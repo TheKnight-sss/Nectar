@@ -129,7 +129,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                       Spacer(),
                       Text(
-                        '\$${widget.model.price}',
+                        '\$${ (widget.model.price * widget.model.quantity).toStringAsFixed(2)}',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
