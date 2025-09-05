@@ -5,9 +5,16 @@ import 'package:necture_ui/core/widgets/main_button.dart';
 import 'package:necture_ui/features/cart/page/acceptedorder.dart';
 import 'package:necture_ui/features/home/models/product_model.dart';
 
-class ProductDetailScreen extends StatelessWidget {
+class ProductDetailScreen extends StatefulWidget {
   const ProductDetailScreen({super.key, required this.model});
   final ProductModel model;
+
+  @override
+  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
+}
+
+class _ProductDetailScreenState extends State<ProductDetailScreen> {
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +61,7 @@ class ProductDetailScreen extends StatelessWidget {
                     ],
                   ),
                   Image.asset(
-                    model.image,
+                    widget.model.image,
                     width: 200,
                     height: 200,
                     fit: BoxFit.contain,
@@ -68,18 +75,68 @@ class ProductDetailScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    model.name,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  Row(
+                    children: [
+                      Text(
+                        widget.model.name,
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Spacer(),
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            isFavorite = !isFavorite;
+                          });
+                        },
+                        icon: Icon(
+                          isFavorite ? Icons.favorite : Icons.favorite_border,
+                          size: 30,
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 10),
-                  Text(
-                    '\$${model.price}',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Appcolor.primaryColor,
-                    ),
+                  Row(
+                    children: [
+                      Row(children: [
+                        IconButton(
+                          onPressed: () {
+                            if (widget.model.quantity > 1) {
+                              setState(() {
+                                widget.model.quantity--;
+                              });
+                            }
+                          },
+                          icon: Icon(Icons.remove,size: 40,),
+                        ),
+                        Text(
+                          widget.model.quantity.toString(),
+                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              widget.model.quantity++;
+                            });
+                          },
+                          icon: Icon(Icons.add, color: Appcolor.primaryColor,size: 40,),
+                        ),
+
+                        ],
+                      ),
+                      Spacer(),
+                      Text(
+                        '\$${widget.model.price}',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Appcolor.primaryColor,
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 20),
                   Divider(),
@@ -126,73 +183,66 @@ class ProductDetailScreen extends StatelessWidget {
 
   Future<dynamic> showCheckout(BuildContext context) {
     return showModalBottomSheet(
-            context: context,
-            isDismissible: false,
-            isScrollControlled: true,
-            useSafeArea: true,
-            builder: (context) {
-              return Container(
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Appcolor.accentColor,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25),
+      context: context,
+      isDismissible: false,
+      isScrollControlled: true,
+      useSafeArea: true,
+      builder: (context) {
+        return Container(
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Appcolor.accentColor,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(25),
+              topRight: Radius.circular(25),
+            ),
+          ),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Text(
+                    "Checkout",
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          "Checkout",
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Spacer(),
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(Icons.close),
-                        ),
-                      ],
+                  Spacer(),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.close),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+              Row(
+                children: [
+                  Text(
+                    "Total Price",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                  ),
+                  Spacer(),
+                  Text(
+                    "\$${(widget.model.price * widget.model.quantity).toStringAsFixed(2)}",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Appcolor.primaryColor,
                     ),
-                    SizedBox(height: 20),
-                    Row(
-                      children: [
-                        Text(
-                          "Total Price",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        Spacer(),
-                        Text(
-                          "\$${(model.price * model.quantity).toStringAsFixed(2)}",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: Appcolor.primaryColor
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20),
-                    MainButton( 
-                      text: "Proceed to Payment",
-                      onPressed: () {
-                        pushTo(context, Acceptedorder());
-                      },
-                      
-                    ),
-                  ],
-                ),
-              );
-            },
-          );
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+              MainButton(
+                text: "Proceed to Payment",
+                onPressed: () {
+                  pushTo(context, Acceptedorder());
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
